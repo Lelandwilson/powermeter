@@ -1,0 +1,4 @@
+Flask
+apscheduler
+smbus2
+serial
