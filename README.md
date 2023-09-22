@@ -1,4 +1,5 @@
-Power Monitoring System
+#Power Monitoring System
+
 Overview
 The Power Monitoring System is a web-based application designed to run on servers, such as a Raspberry Pi. The system interfaces with custom power monitoring devices to gather and present real-time and historical data regarding power usage metrics.
 
