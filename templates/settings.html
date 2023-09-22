@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--    <link rel="stylesheet" href="{{ url_for('static', filename='css/settings_style.css') }}">-->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+      <meta charset="UTF-8">
+          <!-- If IE use the latest rendering engine -->
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- Set the page to the width of the device and set the zoon level -->
+      <meta name="viewport" content="width = device-width, initial-scale = 1">
+      <title>Settings</title>
+
+
+  </head>
+
+  <body>
+    <div class="tab" id="buttonContainer">
+        <button id="Home" class="tablinks" onclick="window.location.href='/'">Home</button>
+        <div id="UnitbuttonContainer">
+            {% for unit_id in unit_ids %}
+                <button id="unit{{ unit_id }}_btn" class="unitlinks" onclick="window.location.href='{{ url_for('unit_page', unit_id=unit_id) }}'">{{ unit_labels.get(unit_id, 'Unit ' ~ unit_id) }}</button>
+            {% endfor %}
+        </div>
+        <!--DROP DOWN MENU HERE -->
+        <div class="dropdown">
+            <button class="dropbtn">Averages
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{{ url_for('pastreadings', period='day') }}">Past Day Averages</a>
+                <a href="{{ url_for('pastreadings', period='week') }}">Past Week Averages</a>
+                <a href="{{ url_for('pastreadings', period='month') }}">Past Month Averages</a>
+                <a href="{{ url_for('pastreadings', period='season') }}">Past Season Averages</a>
+                <a href="{{ url_for('pastreadings', period='year') }}">Past Year Averages</a>
+            </div>
+        </div>
+
+        <button id="Settings" class="unitlinks" onclick="window.location.href='{{ url_for('settings') }}'">Settings</button>
+    </div>
+
+
+    <div class="container">
+        <div class="jumbotron">
+
+           {% block content %}
+              <h1>Settings</h1>
+              <form method="POST">
+                {% for unit_id in unit_ids %}
+                <div class="form-group">
+                  <label for="label_{{ unit_id }}">Label for Unit {{ unit_id }}</label>
+                  <input type="text" class="form-control" id="label_{{ unit_id }}" name="label_{{ unit_id }}" value="{{ unit_labels.get(unit_id, 'Unit ' ~ unit_id) }}">
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="submit" name="reset" value="reset" class="btn btn-default">Reset</button>
+              </form>
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="jumbotron">
+            <textarea id="liveDataBox" style="width: 90%; height: 400px;" readonly></textarea>
+            <br/>
+            <button id="pauseButton" class="btn btn-primary">Pause</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+      <div class="left">Copyright Leland Wilson</div>
+      <div class="right">For BSC307C Bachelor of Electrical Engineering</div>
+    </footer>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+<!--  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script type='text/javascript' src='static/js/settings.js'></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist-plugin-legend/0.6.1/chartist-plugin-legend.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chartist.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <meta charset="UTF-8">
+    <!-- If IE use the latest rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Set the page to the width of the device and set the zoon level -->
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <title>PowerMonitoring</title>
+
+
+</head>
+
+<body>
+
+    <div class="tab" id="buttonContainer">
+        <button id="Home" class="tablinks" onclick="window.location.href='/'">Home</button>
+        <div id="UnitbuttonContainer">
+            {% for unit_id in unit_ids %}
+                <button id="unit{{ unit_id }}_btn" class="unitlinks" onclick="window.location.href='{{ url_for('unit_page', unit_id=unit_id) }}'">{{ unit_labels.get(unit_id, 'Unit ' ~ unit_id) }}</button>
+            {% endfor %}
+        </div>
+        <!--DROP DOWN MENU HERE -->
+        <div class="dropdown">
+            <button class="dropbtn">Averages
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{{ url_for('pastreadings', period='day') }}">Past Day Averages</a>
+                <a href="{{ url_for('pastreadings', period='week') }}">Past Week Averages</a>
+                <a href="{{ url_for('pastreadings', period='month') }}">Past Month Averages</a>
+                <a href="{{ url_for('pastreadings', period='season') }}">Past Season Averages</a>
+                <a href="{{ url_for('pastreadings', period='year') }}">Past Year Averages</a>
+            </div>
+        </div>
+
+        <button id="Settings" class="unitlinks" onclick="window.location.href='{{ url_for('settings') }}'">Settings</button>
+    </div>
+
+
+
+<!--   Live data readings current or power for all units -->
+    <div class="container">
+        <div class="jumbotron">
+            <h3 class="text-center">Live Readings: {{ readingType }}</h3>
+            <div id="#errorMessage"></div>
+            <div id="chartContainer">
+                <canvas id="LiveData_Chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="jumbotron">
+            <br/>
+            <div id="chartContainer2">
+                <h3 class="text-center" id="readingType2A">Live Readings: Total {{ readingType }}</h3>
+                <br/>
+                <canvas id="Sum_LiveData_Chart"></canvas>
+            </div>
+<!--                    <div id="buttonContainer2">-->
+<!--                        <button id="switchSumButton"></button>-->
+<!--                    </div>-->
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="jumbotron">
+            <div id="chartContainer3">
+                <h3 class="text-center" id="readingType2B">Live Readings: Total {{ readingType }}</h3>
+                <canvas id="Pie_LiveData_Chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+      <div class="left">Copyright Leland Wilson</div>
+      <div class="right">For BSC307C Bachelor of Electrical Engineering</div>
+    </footer>
+
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='static/js/index.js'></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>-->
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+table {
+    margin: 0 auto; /* centers table horizontally */
+    padding: 20px; /* padding around the table */
+    border-collapse: separate; /* ensures padding between cells */
+    border-spacing: 10px; /* space between cells */
+}
+
+table th,
+table td {
+    padding: 10px; /* padding within cells */
+}
+
+/* style for table headers */
+table th {
+    background-color: #f0f0f0; /* a light gray */
+    color: #333; /* a dark gray */
+}
+
+/* alternating colors for rows for better readability */
+table tr:nth-child(even) {
+    background-color: #fff; /* a very light gray */
+}
+
+table tr:nth-child(odd) {
+    background-color: #e6e6e6; /* a light gray */
+}
+
+/* style for the empty separator rows */
+table tr td:empty {
+    background-color: white;
+}

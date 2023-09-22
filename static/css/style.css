@@ -1,0 +1,153 @@
+
+.generalButton button{
+    margin: 5px 10px;
+}
+
+.ct-chartSECONDS_LIVE {
+    width: 100%; /* or any specific width */
+    height: 400px; /* or any specific height */
+    margin: 10px 0px 10px 0px;
+}
+/*Sum Total chart*/
+#chartContainer2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 0px 10px 0px;
+    padding: 10px 0px 50px 0px;
+    height: 400px;
+}
+
+/*Pie Chart*/
+#chartContainer3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 0px 10px 0px;
+    padding: 10px 0px 10px 0px;
+    height: 400px;
+}
+
+#legendSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+#legendSection div {
+    margin-right: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+}
+
+
+#myChart, #Sum_LiveData_Chart, #LiveData_Chart {
+    background-color: #ffffff;
+}
+
+#LiveData_Chart, h3.text-center, #switchButton, #Sum_LiveData_Chart, #Pie_LiveData_Chart  {
+    margin: 5px 0px 10px 0px;
+}
+
+
+#Settings {
+   float: right;
+}
+
+
+/* Style the tab */
+.tab {
+    /*overflow: hidden;*/
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    color: cornflowerblue;
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 16px;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #f1f1f1;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 40px; /* Adjust this to match your button's height */
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #f1f1f1;}
+
+.footer {
+  background-color: darkgray;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
